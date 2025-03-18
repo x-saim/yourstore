@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/lib/constants";
-
+import ModeToggle from "./mode-toggle";
 const Header = () => {
   return (
     <header className='w-full border-b'>
@@ -15,14 +15,17 @@ const Header = () => {
           </Link>
         </div>
         <div className="space-x-2">
+          <ModeToggle />
+          {/* Cart Button */}
           <Button asChild variant="ghost">
            <Link href="/cart">
             <ShoppingBag className="w-5 h-5" />
             <span className="hidden lg:block">Cart</span>
            </Link>
           </Button>
-          <Button asChild variant="ghost">
-           <Link href="/signin">
+          {/* Sign In Button */}
+          <Button asChild>
+           <Link href="/sign-in">
             <UserIcon className="w-5 h-5" />
             <span className="hidden lg:block">Sign In</span>
            </Link>
