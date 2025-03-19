@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import ProductPrice from "./product-price";
+import { Button } from "../ui/button";
 
 const ProductCard = ({ product }: { product: any }) => {
   return (
@@ -18,14 +20,16 @@ const ProductCard = ({ product }: { product: any }) => {
         </Link>
       </CardHeader>
       <CardContent className='p-4 grid gap-4'>
+        {/* Brand and name */}
         <div className='text-xs'>{product.brand}</div>
         <Link href={`/product/${product.slug}`}>
-          <h2 className='text-sm font-medium'>{product.name}</h2>
+          <CardTitle className='text-sm font-medium'>{product.name}</CardTitle>
         </Link>
+        {/* Rating and price */}
         <div className='flex-between gap-4'>
           <p>{product.rating} stars</p>
           {product.stock > 0 ? (
-            <p className='font-bold'>${product.price}</p>
+            <ProductPrice value={product.price} />
           ) : (
             <p className='text-destructive'>Out of Stock</p>
           )}
