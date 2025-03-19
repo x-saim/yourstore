@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import ProductPrice from "./product-price";
-import { Button } from "../ui/button";
 
 const ProductCard = ({ product }: { product: any }) => {
   return (
