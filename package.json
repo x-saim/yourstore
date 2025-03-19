@@ -9,7 +9,8 @@
     "lint": "next lint",
     "postinstall": "prisma generate",
     "migrate": "prisma migrate dev",
-    "studio": "prisma studio"
+    "studio": "prisma studio",
+    "seed": "npx tsx db/seed"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
