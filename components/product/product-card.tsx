@@ -2,8 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ProductPrice from "./product-price";
+import { Product } from "@prisma/client";
 
-const ProductCard = ({ product }: { product: any }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   return (
     <Card className='w-full max-w-sm'>
       <CardHeader className='p-0 items-center'>
@@ -26,9 +27,9 @@ const ProductCard = ({ product }: { product: any }) => {
         </Link>
         {/* Rating and price */}
         <div className='flex-between gap-4'>
-          <p>{product.rating} stars</p>
+          <p>{product.rating.toString()} stars</p>
           {product.stock > 0 ? (
-            <ProductPrice value={product.price} />
+            <ProductPrice value={Number(product.price)} />
           ) : (
             <p className='text-destructive'>Out of Stock</p>
           )}
