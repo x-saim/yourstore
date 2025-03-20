@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ProductPrice from "./product-price";
-import { Product } from "@prisma/client";
+import { Product } from "@/types";
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (

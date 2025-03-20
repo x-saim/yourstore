@@ -7,7 +7,7 @@ const currency = z
     (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimalPlaces(Number(value))),
     'Price must have exactly two decimal places (e.g., 49.99)'
   );
-  
+
 // Schema for inserting a product
 export const insertProductSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
