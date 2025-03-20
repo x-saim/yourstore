@@ -5,8 +5,7 @@ import { getProductBySlug } from '@/lib/actions/product.actions';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
-import { Product } from '@/types';
-
+import ProductImages from "@/components/product/product-images";
 
 const ProductPageDetails = async (props: { params: Promise<{ slug: string }> }) => {
   const params = await props.params;
@@ -21,7 +20,9 @@ const ProductPageDetails = async (props: { params: Promise<{ slug: string }> }) 
       <section>
         <div className='grid grid-cols-1 md:grid-cols-5'>
           {/* Images Column */}
-          <div className='col-span-2'>{/* Add Images */}</div>
+          <div className='col-span-2'>
+            <ProductImages images={product.images} />
+          </div>
 
           {/* Details Column */}
           <div className='col-span-2 p-5'>
