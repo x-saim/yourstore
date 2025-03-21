@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern E-Commerce Platform
 
-## Getting Started
+A full-featured shopping platform built with modern technologies, offering seamless payment processing, user reviews, email notifications, and more.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- 🛍️ Complete e-commerce functionality
+- 💳 Secure payments via PayPal and Stripe
+- 📧 Automated email receipts
+- ⭐ Customer review system
+- 📱 Responsive design
+- 🔐 User authentication
+- 📊 Analytics dashboard
+- 🖼️ Image upload capabilities
+- ✨ Modern UI components
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Frontend
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- ShadCN UI
+- Recharts for analytics
+- React Hook Form for form handling
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Backend
+- PostgreSQL
+- Prisma ORM
+- Next Auth for authentication
+- Zod for validation
 
-## Learn More
+### Payment Processing
+- PayPal API integration
+- Stripe API integration
 
-To learn more about Next.js, take a look at the following resources:
+### Testing & Quality
+- Jest
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### File Handling
+- Uploadthing for file uploads
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+This project is licensed under the MIT License.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Acknowledgments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js](https://nextjs.org/)
+- [Prisma](https://www.prisma.io/)
+- [ShadCN UI](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Stripe](https://stripe.com/)
+- [PayPal](https://www.paypal.com/)
+- [Uploadthing](https://uploadthing.com/)
