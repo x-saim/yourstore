@@ -14,6 +14,14 @@ export const LATEST_PRODUCTS_LIMIT =
 
 // Sign in constants
 export const signInDefaultValues = {
-  email: '',
-  password: '',
+  email: 'john@doe.com',
+  password: 'password',
+};
+
+// Sign up constants
+export const signUpDefaultValues = {
+  name: 'Steve Smith',
+  email: 'steve@example.com',
+  password: 'password',
+  confirmPassword: 'password',
 };
