@@ -10,7 +10,12 @@ import {
 import Link from 'next/link';
 import ModeToggle from './mode-toggle';
 import UserButton from './user-button';
-const Menu = () => {
+import { auth } from '@/auth';
+
+const Menu = async () => {
+  const session = await auth();
+
+
   return (
     <>
 
@@ -31,12 +36,15 @@ const Menu = () => {
           <UserButton />
 
           {/* Sign In Button */}
-          <Button asChild>
-            <Link href="/sign-in">
-              <UserIcon />
-              Sign In
-            </Link>
-          </Button>
+          {/* If the user is authenticated and signed in, sign in button is not shown */}
+          {!session && (
+            <Button asChild>
+              <Link href="/sign-in">
+                <UserIcon />
+                Sign In
+              </Link>
+            </Button>
+          )}
         </nav>
 
         {/* Mobile Menu */}

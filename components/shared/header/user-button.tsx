@@ -15,7 +15,6 @@ const UserButton = async () => {
     return null;
   }
 
-  console.log('User session', session);
   const firstInitial = session.user?.name?.charAt(0).toUpperCase() ?? '';
 
   return (

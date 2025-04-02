@@ -60,13 +60,47 @@ export const config = {
     }),
   ],
   callbacks: {
-    async session({ session, user, trigger, token }) {
-      session.user.id = token.sub as string;
-      if (trigger === 'update') {
-        session.user.name = user.name;
+    // The jwt callback is used to add custom fields to the token
+    async jwt({token, user, trigger, session}) {
+      // Assign user fields to the token
+      if (user) {
+        token.role = user.role;   
+        token.id = user.id;
+
+        // If user has no name, use email as their default name
+        if (user.name === 'NO_NAME') {
+          token.name = user.email!.split('@')[0];
+
+          //Update the user in the database with the new name
+          await prisma.user.update({
+            where: { id: user.id },
+            data: { name: token.name },
+          });
+        }
       }
 
-      return session;
+      // Handle session updates
+      if (session?.user.name && trigger === 'update') {
+        token.name = session.user.name;
+      }
+
+      return token;
+    },
+    // The session callback is used to add custom fields to the session
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async session({ session, trigger, token }: any) {
+      // Map the token data to the session object
+      session.user.id = token.id;
+      session.user.name = token.name;
+      session.user.role = token.role; 
+
+    // Optionally handle session updates (like name change)
+    if (trigger === 'update' && token.name) {
+      session.user.name = token.name;
+    }
+
+    // Return the updated session object
+    return session;
     },
   },
 } satisfies NextAuthConfig;
