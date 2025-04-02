@@ -61,7 +61,8 @@ export const config = {
   ],
   callbacks: {
     // The jwt callback is used to add custom fields to the token
-    async jwt({token, user, trigger, session}) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async jwt({token, user, trigger, session}: any) {
       // Assign user fields to the token
       if (user) {
         token.role = user.role;   
