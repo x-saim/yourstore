@@ -97,6 +97,7 @@ describe('User Actions', () => {
       
       // Assert
       expect(signOut).toHaveBeenCalledTimes(1);
+
     });
   });
 }); 

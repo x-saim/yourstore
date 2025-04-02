@@ -9,19 +9,28 @@ import {
 } from '@/components/ui/sheet';
 import Link from 'next/link';
 import ModeToggle from './mode-toggle';
-
+import UserButton from './user-button';
 const Menu = () => {
   return (
     <>
+
       <div className="flex justify-end gap-3">
+        {/* Desktop Menu */}
         <nav className="md:flex hidden w-full max-w-xs gap-1">
           <ModeToggle />
+
+          {/* Cart Button */}
           <Button asChild variant="ghost">
             <Link href="/cart">
               <ShoppingCart />
               Cart
             </Link>
           </Button>
+
+          {/* User Button */}
+          <UserButton />
+
+          {/* Sign In Button */}
           <Button asChild>
             <Link href="/sign-in">
               <UserIcon />
@@ -29,6 +38,8 @@ const Menu = () => {
             </Link>
           </Button>
         </nav>
+
+        {/* Mobile Menu */}
         <nav className="md:hidden">
           <Sheet>
             {/* SheetTrigger is the button that opens the sheet */}
@@ -45,12 +56,10 @@ const Menu = () => {
                   Cart
                 </Link>
               </Button>
-              <Button asChild>
-                <Link href="/sign-in">
-                  <UserIcon />
-                  Sign In
-                </Link>
-              </Button>
+
+              {/* User Button */}
+              <UserButton />
+
               {/* The `SheetTitle` and `SheetDescription` components are required or you will get a warning in the console. */}
               <SheetDescription></SheetDescription>
             </SheetContent>

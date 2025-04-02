@@ -1,31 +1,26 @@
-module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
+// Need to use CommonJS for Next.js jest config
+// The "require" style is acceptable in this specific file because Jest config requires it
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app
+  dir: './',
+});
+
+// Add any custom config to be passed to Jest
+const customJestConfig = {
+  setupFilesAfterEnv: ['<rootDir>/__tests__/jest.setup.ts'],
+  testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
-    // Handle module aliases (if you use them in the project)
     '^@/(.*)$': '<rootDir>/$1',
-    // Handle CSS imports (with CSS modules)
-    '\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-    // Handle CSS imports (without CSS modules)
-    '\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
-    // Handle image imports
-    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['ts-jest', {
-      tsconfig: 'tsconfig.json',
-    }],
-  },
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  testMatch: ['**/__tests__/**/*.test.(ts|tsx|js)'],
-  collectCoverage: true,
-  collectCoverageFrom: [
-    '**/*.{js,jsx,ts,tsx}',
-    '!**/*.d.ts',
-    '!**/node_modules/**',
-    '!**/.next/**',
-    '!**/coverage/**',
+  moduleDirectories: ['node_modules', '<rootDir>/'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!bcrypt-ts-edge).+\\.js$'
   ],
-}; 
+};
+
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(customJestConfig); 
