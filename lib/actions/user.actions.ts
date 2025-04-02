@@ -68,14 +68,12 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
       email: user.email,
       password: plainPassword,
     });
-
-    // Redirect to the home page
-    redirect('/');
-
+ 
     return {
       success: true,
       message: 'Sign up successful. User created successfully.',
     };
+
   } catch (error) {
     // Check if the error is the specific RedirectError thrown by NextAuth
     if (isRedirectError(error)) {
