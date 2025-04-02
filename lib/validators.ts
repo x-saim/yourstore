@@ -42,3 +42,20 @@ export const signInFormSchema = z.object({
       `Password must be at least ${MIN_PASSWORD_LENGTH} characters long.`
     ),
 });
+
+// Schema for user signup
+// We use z.refine to validate that the password and confirmPassword fields match
+export const signUpFormSchema = z.object({
+  name: z.string().min(3, 'Name must be at least 3 characters'),
+  email: z.string().email('Please enter a valid email address.'),
+  password: z
+    .string()
+    .min(MIN_PASSWORD_LENGTH, 'Password must be at least 6 characters long.'),
+  confirmPassword: z
+    .string()
+    .min(MIN_PASSWORD_LENGTH, 'Password must be at least 6 characters long.')
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ['confirmPassword'],
+  });
