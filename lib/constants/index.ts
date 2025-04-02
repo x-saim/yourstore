@@ -11,3 +11,9 @@ export const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL || "http://localhos
 // The number of latest products to display on the home page
 export const LATEST_PRODUCTS_LIMIT =
   Number(process.env.LATEST_PRODUCTS_LIMIT) || 4;
+
+// Sign in constants
+export const signInDefaultValues = {
+  email: '',
+  password: '',
+};
