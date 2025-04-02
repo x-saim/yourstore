@@ -17,7 +17,14 @@ export const metadata: Metadata = {
   title: 'Sign In',
 };
 
-const SignInPage = () => {
+const SignInPage = async () => {
+
+  // Check if user is already authenticated
+  const session = await auth();
+  if (session) {
+    redirect('/');
+  }
+
   return (
     <div className='w-full max-w-md mx-auto'>
       <Card>
