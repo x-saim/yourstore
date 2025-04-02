@@ -17,12 +17,14 @@ export const metadata: Metadata = {
   title: 'Sign In',
 };
 
-const SignInPage = async () => {
+const SignInPage = async (props: { searchParams: Promise<{ callbackUrl?: string }> }) => {
+  // Get the callbackUrl from the search params
+  const { callbackUrl } = await props.searchParams;
 
   // Check if user is already authenticated
   const session = await auth();
   if (session) {
-    redirect('/');
+    redirect(callbackUrl || '/'); //If there is a callbackUrl, redirect to it, otherwise redirect to the home page
   }
 
   return (
