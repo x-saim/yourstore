@@ -1,4 +1,4 @@
-import { EllipsisVertical, ShoppingCart, UserIcon } from 'lucide-react';
+import { EllipsisVertical, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -10,11 +10,8 @@ import {
 import Link from 'next/link';
 import ModeToggle from './mode-toggle';
 import UserButton from './user-button';
-import { auth } from '@/auth';
 
-const Menu = async () => {
-  const session = await auth();
-
+const Menu = () => {
 
   return (
     <>
@@ -34,17 +31,6 @@ const Menu = async () => {
 
           {/* User Button */}
           <UserButton />
-
-          {/* Sign In Button */}
-          {/* If the user is authenticated and signed in, sign in button is not shown */}
-          {!session && (
-            <Button asChild>
-              <Link href="/sign-in">
-                <UserIcon />
-                Sign In
-              </Link>
-            </Button>
-          )}
         </nav>
 
         {/* Mobile Menu */}
