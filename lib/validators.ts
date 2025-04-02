@@ -1,10 +1,11 @@
-import { z } from "zod";
-import { formatNumberWithDecimalPlaces } from "./utils";
+import { z } from 'zod';
+import { formatNumberWithDecimalPlaces } from './utils';
 
 const currency = z
   .string()
   .refine(
-    (value) => /^\d+(\.\d{2})?$/.test(formatNumberWithDecimalPlaces(Number(value))),
+    (value) =>
+      /^\d+(\.\d{2})?$/.test(formatNumberWithDecimalPlaces(Number(value))),
     'Price must have exactly two decimal places (e.g., 49.99)'
   );
 
@@ -22,3 +23,22 @@ export const insertProductSchema = z.object({
   price: currency,
 });
 
+// Schema for user signin
+const MIN_PASSWORD_LENGTH = 6;
+
+export const signInFormSchema = z.object({
+  email: z
+    .string({
+      required_error: 'Email is required.',
+    })
+    .trim() // Remove leading/trailing whitespace for security and data consistency
+    .email('Please enter a valid email address.'), // Slightly friendlier message
+  password: z
+    .string({
+      required_error: 'Password is required.',
+    })
+    .min(
+      MIN_PASSWORD_LENGTH,
+      `Password must be at least ${MIN_PASSWORD_LENGTH} characters long.`
+    ),
+});

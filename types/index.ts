@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { insertProductSchema } from "../lib/validator";
+import { z } from 'zod';
+import { insertProductSchema } from '../lib/validators';
 
 // Extend the insertProductSchema with the required fields
 export type Product = z.infer<typeof insertProductSchema> & {
@@ -7,4 +7,4 @@ export type Product = z.infer<typeof insertProductSchema> & {
   createdAt: Date;
   rating: string;
   numReviews: number;
-}
+};
