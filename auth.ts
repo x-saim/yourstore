@@ -66,7 +66,6 @@ export const config = {
       // Assign user fields to the token
       if (user) {
         token.role = user.role;   
-        token.id = user.id;
 
         // If user has no name, use email as their default name
         if (user.name === 'NO_NAME') {
@@ -91,7 +90,7 @@ export const config = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async session({ session, trigger, token }: any) {
       // Map the token data to the session object
-      session.user.id = token.id;
+      session.user.id = token.sub;
       session.user.name = token.name;
       session.user.role = token.role; 
 
